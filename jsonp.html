@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>跨域</title>
+		<style>
+			#txt{
+				width:220px;
+			}
+			ul{
+				list-style:none;
+				position: absolute;
+				left:93px;
+				top:38px;
+			}
+			li{
+				border-top:1px solid #ccc;
+				border-left:1px solid #ccc;
+				border-right:1px solid #ccc;
+				width:222px;
+				height:20px;
+				font-size:14px;
+				color:#888;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			li:last-of-type{
+				border-bottom:1px solid #ccc;
+			}
+			#btn{
+				width:100px;
+				height:20px;
+				background: dodgerblue;
+				border:1px solid #bbb;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <img src="img/baidu.gif" alt="" /> -->
+		<img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="外链的百度logo" />		
+		<input type="text" name='txt' id='txt'/>
+		<input type="button" name="btn" id="btn" value="百度一下" />
+		<ul id='ul'></ul>
+		<script>
+			let oTxt = document.getElementById('txt')
+			let oUl = document.getElementById('ul')
+			//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=aaaaa&cb=
+			
+			//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=aaaaa&json=1&p=3&sid=26351_1449_25810_26458_21079_20930&req=2&bs=%E5%95%8A%E6%9C%8B%E5%8F%8B%E5%86%8D%E8%A7%81&pbs=%E5%95%8A%E6%9C%8B%E5%8F%8B%E5%86%8D%E8%A7%81&csor=4&pwd=aa&cb=jQuery1102043402403969388437_1526546592417&_=1526546592430
+			
+			//https://gsp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=jQuery110107957703637773847_1526549612169&wd=aaaaaaa&sc=hao123&_=1526549612181
+			
+			function fn(data){
+				//console.log(data);
+				for(let i = 0,len = data.s.length;i < len;i ++){
+					let li = document.createElement('li');
+					li.innerHTML = data.s[i];
+					oUl.appendChild(li);
+					li.onclick = function(){
+						oTxt.value = li.innerHTML;
+						oUl.style.display = 'none';
+					}
+					li.onmouseenter = function(){
+						li.style.background = '#bbb';
+					}
+					li.onmouseleave = function(){
+						li.style.background = '';
+					}
+					oTxt.onfocus = function(){
+						oUl.style.display = 'block';
+					}
+				}
+			}
+			oTxt.onkeyup = function(){
+				oUl.innerHTML = "";
+				let str = this.value;
+				let oSc = document.createElement('script');
+				//oSc.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + str + '&cb=fn';
+				oSc.src = 'https://gsp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=fn'+'&wd='+ str;
+				document.getElementsByTagName('head')[0].appendChild(oSc);
+			}
+			
+		</script>
+	</body>
+</html>
