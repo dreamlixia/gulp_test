@@ -1,0 +1,29 @@
+.txt{
+    width:220px;
+}
+ul{
+    list-style:none;
+    position: absolute;
+    left:93px;
+    top:38px;
+}
+li{
+    border-top:1px solid #ccc;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    width:222px;
+    height:20px;
+    font-size:14px;
+    color:#888;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+li:last-of-type{
+    border-bottom:1px solid #ccc;
+}
+#btn{
+    width:100px;
+    height:20px;
+    background: dodgerblue;
+    border:1px solid #bbb;
+}

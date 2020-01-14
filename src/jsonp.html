@@ -2,47 +2,18 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>跨域</title>
-		<style>
-			#txt{
-				width:220px;
-			}
-			ul{
-				list-style:none;
-				position: absolute;
-				left:93px;
-				top:38px;
-			}
-			li{
-				border-top:1px solid #ccc;
-				border-left:1px solid #ccc;
-				border-right:1px solid #ccc;
-				width:222px;
-				height:20px;
-				font-size:14px;
-				color:#888;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-			}
-			li:last-of-type{
-				border-bottom:1px solid #ccc;
-			}
-			#btn{
-				width:100px;
-				height:20px;
-				background: dodgerblue;
-				border:1px solid #bbb;
-			}
-		</style>
+		<title>跨域-改-在-测试-打印-秒钟-测试路径-测测-？</title>
+		<link type="text/css" rel="styleSheet" href="./css/jsonp.css">
 	</head>
 	<body>
 		<!-- <img src="img/baidu.gif" alt="" /> -->
 		<img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="外链的百度logo" />		
-		<input type="text" name='txt' id='txt'/>
+		<input type="text" name='txt' class='txt'/>
 		<input type="button" name="btn" id="btn" value="百度一下" />
 		<ul id='ul'></ul>
+
 		<script>
-			let oTxt = document.getElementById('txt')
+			let oTxt = document.getElementsByClassName('txt')
 			let oUl = document.getElementById('ul')
 			//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=aaaaa&cb=
 			
@@ -79,7 +50,6 @@
 				oSc.src = 'https://gsp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=fn'+'&wd='+ str;
 				document.getElementsByTagName('head')[0].appendChild(oSc);
 			}
-			
 		</script>
 	</body>
 </html>
