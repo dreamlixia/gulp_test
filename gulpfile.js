@@ -1,13 +1,25 @@
 const { series, parallel, src, dest } = require('gulp')
 const uglify = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
+var htmlmin = require('gulp-htmlmin');
+var del = require('del');
 
 const projectname = require('./package.json').name
 const buildfile = '.build'
 const PROJECT_DIR = projectname + '/' + buildfile
 
+function delFiles(cb) {
+  console.log('删除gulp_test文件')
+  del(projectname)
+  cb()
+}
+
+exports.buildModule = series(delFiles, streamTaskHtml, uglifyCss, uglifyJs)
+
 function streamTaskHtml() {
   return src('src/*.html')
-    .pipe(dest(PROJECT_DIR));
+    .pipe(htmlmin())
+    .pipe(dest(PROJECT_DIR + '/html/'));
 }
 exports.streamTaskHtml = streamTaskHtml;
 
@@ -19,7 +31,7 @@ exports.streamTaskImg = streamTaskImg;
 
 function uglifyCss() {
   return src('src/css/*.css')
-    .pipe(uglify())
+    .pipe(minifyCss())
     .pipe(dest(PROJECT_DIR + '/css'));
 }
 exports.uglifyCss = uglifyCss
