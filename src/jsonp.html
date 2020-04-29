@@ -6,11 +6,21 @@
 		<link type="text/css" rel="styleSheet" href="./css/jsonp.css">
 	</head>
 	<body>
-		<!-- <img src="img/baidu.gif" alt="" /> -->
-		<img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="外链的百度logo" />		
-		<input type="text" name='txt' class='txt'/>
-		<input type="button" name="btn" id="btn" value="百度一下" />
-		<ul id='ul'></ul>
+		<div>
+			<!-- @if NODE_ENV='production' -->
+			<div class="topheader">gulp_test生产环境测试</div>
+			<!-- @endif -->
+			<!-- @if NODE_ENV!='production' -->
+			<div class="topheader">gulp_test非生产环境测试</div>
+			<!-- @endif -->
+
+			<!-- <img src="img/baidu.gif" alt="" /> -->
+			<img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="外链的百度logo" />		
+			<input type="text" name='txt' class='txt'/>
+			<input type="button" name="btn" id="btn" value="百度一下" />
+			<ul id='ul'></ul>
+		</div>
+		
 
 		<script>
 			let oTxt = document.getElementsByClassName('txt')
